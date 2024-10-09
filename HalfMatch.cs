@@ -2,7 +2,7 @@
 
 namespace FootBallGameSimulator
 {
-	public sealed class Half : Match
+	public class Half : Match
 	{
 		//Attributes 
 		public int Team1Skills { get; private set; }
@@ -18,7 +18,7 @@ namespace FootBallGameSimulator
 		//Methods 
 
 		//Turn will be represented as instances in a loop 
-		public void Turn(Team Attacking, Team Defending)
+		public void Turn (Team Attacking, Team Defending)
 		{ 
 			for(int i = 1; i <= HalfMatch; i++)
 			{

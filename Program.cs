@@ -37,11 +37,28 @@
             team2.DisplayPlayers();
 
             //Start Match 
-            Console.WriteLine("\n--- First Half ---");
-            Match FirstHalf = new Half(team1, team2); //Creating the first half of the match 
+            Console.WriteLine("\n\n\n--- First Half ---");
+            Half FirstHalf = new Half(team1, team2); //Creating the first half of the match 
 
-            Console.WriteLine("--- Second Half ---");
+            Team Starting = FirstHalf.CoinToss();
+
+            if (Starting == team1) 
+            { FirstHalf.Turn(Starting, team2); }
+
+            else
+            { FirstHalf.Turn(Starting, team2); }
+            
+
+            Console.WriteLine("\n\n\n--- Second Half ---");
             Match SecondHalf = new Half(team1, team2); //Creating the second half of the match 
+            
+            Team SecondStart = FirstHalf.CoinToss();
+
+            if (Starting == team1)
+            { FirstHalf.Turn(SecondStart, team2); }
+
+            else
+            { FirstHalf.Turn(SecondStart, team2); }
 
         }
     }
