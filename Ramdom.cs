@@ -12,18 +12,14 @@ namespace FootBallGameSimulator
         {
             Random random = new Random();
             int randomNumber = random.Next();
-            Console.WriteLine("Random number " + randomNumber);
             return randomNumber;
         }
 
         
-        public static int GetRandom(int Min, int Max) //This override will be used to get a random Skill level 
+        public static int GetRandom(int Min, int Max) //This override will be used to get a random Skill level and for when generating players for teams 
         {
             Random random = new Random();
             int randomInRange = random.Next(Min, Max);
-
-            
-            Console.WriteLine("Random number between 1 and 99: " + randomInRange);
             return randomInRange;
         }
     }
