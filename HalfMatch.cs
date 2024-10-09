@@ -14,7 +14,8 @@ namespace FootBallGameSimulator
         //Constructor
         public Half(Team team1, Team team2) : base (team1, team2)
 		{
-			HalfMatch = base.TotalTurns / 2;
+
+            HalfMatch = base.TotalTurns / 2;
 			Team1 = team1;
 			Team2 = team2;
 		}
@@ -23,8 +24,10 @@ namespace FootBallGameSimulator
 
 		//Turn will be represented as instances in a loop 
 		public void Turn (Team Attacking, Team Defending, int turn)
-		{ 
-			for(int i = 0; i < HalfMatch; i++)
+		{
+
+            Console.WriteLine("Current total points 1 , 2 " + Team1Score + Team2Score);
+            for (int i = 0; i < HalfMatch; i++)
 			{
                 int AttackerSkills = CalculateTeamSkill(Attacking);
 				int DefenderSkills = CalculateTeamSkill(Defending);
@@ -49,7 +52,9 @@ namespace FootBallGameSimulator
 				Defending.Defend(); //Generating new mix of players from the team that will participate in the next turn
 				Attacking.Attack();
             }
-		}
+
+            Console.WriteLine("Current total points 1 , 2 " + Team1Score + Team2Score);
+        }
 
         public int CalculateTeamSkill(Team team)
 		{

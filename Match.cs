@@ -17,14 +17,12 @@ namespace FootBallGameSimulator
 			TotalTurns = 10; // Assuming that the length of one match is 10 turns 
 			Team1 = team1;
 			Team2 = team2;
-			Team1Score = 0;
-            Team2Score = 0;
         }
 
 		//Methods
 		public Team CoinToss() //Cointoss randomly chooses who will start as the attacker 
 		{
-			Team StartingTeam;
+            Team StartingTeam;
 			int Random = RandomInt.GetRandom();
 
 			if (Random == 1)

@@ -37,10 +37,14 @@
             team2.DisplayPlayers();
 
             //Start Match 
-            Console.WriteLine("\n\n\n--- First Half ---");
-            Half FirstHalf = new Half(team1, team2); //Creating the first half of the match 
 
-             Team Starting = FirstHalf.CoinToss();
+            Half FirstHalf = new Half(team1, team2); //Creating the first half of the match 
+            Half SecondHalf = new Half(team1, team2); //Creating the second half of the match, put these one after the other so score does not get affected when new instance created 
+
+            Team Starting = FirstHalf.CoinToss();
+            Team SecondStart = SecondHalf.CoinToss();
+
+            Console.WriteLine("\n\n\n--- First Half ---");
 
             if (Starting == team1) 
             { FirstHalf.Turn(Starting, team2, 1); }
@@ -50,15 +54,30 @@
             
 
             Console.WriteLine("\n\n\n--- Second Half ---");
-            Half SecondHalf = new Half(team1, team2); //Creating the second half of the match 
-            
-            Team SecondStart = SecondHalf.CoinToss();
 
+            Console.WriteLine("Current total points 1 , 2 " + FirstHalf.Team1Score + FirstHalf.Team2Score);
             if (SecondStart == team1)
-            { SecondHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch+1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
+            { SecondHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch+1));} //Starting with half match so the number of the turn continues and does not restart from 1 
 
             else
-            { SecondHalf.Turn(SecondStart, team1, (FirstHalf.HalfMatch+1)); }
+            { SecondHalf.Turn(SecondStart, team1, (FirstHalf.HalfMatch+1));
+            }
+
+
+            //Display final score 
+            Console.WriteLine("\n\nFINAL SCORE:");
+            Console.WriteLine($"{SecondHalf.Team1.TeamName}: {SecondHalf.Team1Score} | {SecondHalf.Team2.TeamName}: {SecondHalf.Team2Score}");
+
+            //Display result
+            if (SecondHalf.Team2Score > SecondHalf.Team1Score)
+            {
+                Console.WriteLine($"{team2.TeamName} are the winners!");
+            }
+
+            else if (SecondHalf.Team2Score < SecondHalf.Team1Score)
+            { Console.WriteLine($"{team1.TeamName} are the winners!"); }
+
+            else { Console.WriteLine("It's a draw!"); }
 
         }
     }
