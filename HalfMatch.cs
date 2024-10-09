@@ -8,30 +8,41 @@ namespace FootBallGameSimulator
 		public int Team1Skills { get; private set; }
 		public int Team2Skills { get; private set; }
 		public int HalfMatch { get; private set; }
+        public Team Team1 { get; private set; }
+        public Team Team2 { get; private set; }
 
-		//Constructor
-		public Half(Team team1, Team team2) : base (team1, team2)
+        //Constructor
+        public Half(Team team1, Team team2) : base (team1, team2)
 		{
 			HalfMatch = base.TotalTurns / 2;
+			Team1 = team1;
+			Team2 = team2;
 		}
 
 		//Methods 
 
 		//Turn will be represented as instances in a loop 
-		public void Turn (Team Attacking, Team Defending)
+		public void Turn (Team Attacking, Team Defending, int turn)
 		{ 
-			for(int i = 1; i <= HalfMatch; i++)
+			for(int i = 0; i < HalfMatch; i++)
 			{
                 int AttackerSkills = CalculateTeamSkill(Attacking);
 				int DefenderSkills = CalculateTeamSkill(Defending);
 				bool Goal = CompareSkills(AttackerSkills, DefenderSkills);
-				
-                Console.Write($"\nTurn {i}: {Attacking.TeamName} are attacking... ");
-                if (Goal) { Console.Write("Goal!"); }
+
+                Console.Write($"\nTurn {turn}: {Attacking.TeamName} are attacking... ");
+                turn++;
+                if (Goal)
+				{ 
+					Console.Write("Goal!");
+					AddScore(Attacking);
+				}
                 else { Console.Write("Defended successfully!"); }
 
-				//Now teams will swap places Attackers will become Defenders and vice versa 
-				Team X = Defending; 
+				Console.WriteLine($" --> Team {Team1.TeamName} Score {Team1Score} | Team {Team2.TeamName} Score {Team2Score}");
+               
+                //Now teams will swap places Attackers will become Defenders and vice versa 
+                Team X = Defending; 
 			    Defending = Attacking;
 				Attacking = X;
             }
