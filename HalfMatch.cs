@@ -45,6 +45,9 @@ namespace FootBallGameSimulator
                 Team X = Defending; 
 			    Defending = Attacking;
 				Attacking = X;
+
+				Defending.Defend(); //Generating new mix of players from the team that will participate in the next turn
+				Attacking.Attack();
             }
 		}
 
@@ -54,7 +57,7 @@ namespace FootBallGameSimulator
 
 			for (int i = 0; i < team.Players.Count; i++) //Going through team players and tallying their skills 
 			{
-				TotalSkill =+ team.Players[i].SkillLevel;
+				TotalSkill = TotalSkill + team.Players[i].SkillLevel;
 			}
 
 			return TotalSkill;
