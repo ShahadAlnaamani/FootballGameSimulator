@@ -35,6 +35,14 @@
             team1.DisplayPlayers();
             Console.WriteLine();
             team2.DisplayPlayers();
+
+            //Start Match 
+            Console.WriteLine("\n--- First Half ---");
+            Match FirstHalf = new Half(team1, team2); //Creating the first half of the match 
+
+            Console.WriteLine("--- Second Half ---");
+            Match SecondHalf = new Half(team1, team2); //Creating the second half of the match 
+
         }
     }
 }

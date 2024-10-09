@@ -55,7 +55,7 @@ namespace FootBallGameSimulator
 
 			else
 			{
-				return 0; //Means an issue happened and will print an error message from program
+				return 0; //Means an issue happened and will print an error message from program     
 			}
 		}
 	}
