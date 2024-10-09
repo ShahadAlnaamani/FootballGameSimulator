@@ -55,10 +55,10 @@
             Team SecondStart = FirstHalf.CoinToss();
 
             if (Starting == team1)
-            { FirstHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch+1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
+            { FirstHalf.Turn(SecondStart, team1, (FirstHalf.HalfMatch+1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
 
             else
-            { FirstHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch+1)); }
+            { FirstHalf.Turn(team2, SecondStart, (FirstHalf.HalfMatch+1)); }
 
         }
     }
