@@ -106,66 +106,73 @@ public class TeamGenerator
 
             return NewTeam;
         }
-        
+
         else //CODE FOR SECOND TEAM
         {
 
-        int i = 0;
-        foreach (KeyValuePair<int, string> player in PlayerPool)
-        {
-            if (i < 1)
+            int i = 0;
+            foreach (KeyValuePair<int, string> player in PlayerPool)
             {
-                //CREATING GOALIE x1 
-                Skill = RandomInt.GetRandom(1, 101);
-                Player Goalie = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.GoalKeeper, Skill);
-                PlayerPool.Remove(player.Key);
-                OtherTeam.Add(Goalie);
-                i++;
+                if (i < 1)
+                {
+                    //CREATING GOALIE x1 
+                    Skill = RandomInt.GetRandom(1, 101);
+                    Player Goalie = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.GoalKeeper, Skill);
+                    PlayerPool.Remove(player.Key);
+                    OtherTeam.Add(Goalie);
+                    i++;
+                }
+                else { break; }
             }
-        }
 
-        i = 0;
-        foreach (KeyValuePair<int, string> player in PlayerPool)
-        {
-            while (i < 2)
-            {
-                //CREATING DEFENDERS x2
-                Skill = RandomInt.GetRandom(1, 101);
-                Player Def = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Defender, Skill);
-                PlayerPool.Remove(player.Key);
-                OtherTeam.Add(Def);
-                i++;
-            }
-        }
 
-        i = 0;
-        foreach (KeyValuePair<int, string> player in PlayerPool)
-        {
-            while (i < 3)
-            {
-                //CREATING MIDFIELDERS x3
-                Skill = RandomInt.GetRandom(1, 101);
-                Player Mid = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Midfielder, Skill);
-                PlayerPool.Remove(player.Key);
-                OtherTeam.Add(Mid);
-                i++;
-            }
-        }
 
-        i = 0;
-        foreach (KeyValuePair<int, string> player in PlayerPool)
-        {
-            while (i < 3)
+            i = 0;
+            foreach (KeyValuePair<int, string> player in PlayerPool)
             {
-                //CREATING FORWARD x3
-                Skill = RandomInt.GetRandom(1, 101);
-                Player Forward = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Forward, Skill);
-                PlayerPool.Remove(player.Key);
-                OtherTeam.Add(Forward);
-                i++;
+                if (i < 2)
+                {
+                    //CREATING DEFENDERS x2
+                    Skill = RandomInt.GetRandom(1, 101);
+                    Player Def = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Defender, Skill);
+                    PlayerPool.Remove(player.Key);
+                    OtherTeam.Add(Def);
+                    i++;
+                }
+                else { break; }
             }
-        }
-        return OtherTeam;
+
+            i = 0;
+            foreach (KeyValuePair<int, string> player in PlayerPool)
+            {
+                if (i < 3)
+                {
+                    //CREATING MIDFIELDERS x3
+                    Skill = RandomInt.GetRandom(1, 101);
+                    Player Mid = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Midfielder, Skill);
+                    PlayerPool.Remove(player.Key);
+                    OtherTeam.Add(Mid);
+                    i++;
+                }
+            }
+
+            i = 0;
+            foreach (KeyValuePair<int, string> player in PlayerPool)
+            {
+                if (i < 3)
+                {
+                    //CREATING FORWARD x3
+                    Skill = RandomInt.GetRandom(1, 101);
+                    Player Forward = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Forward, Skill);
+                    PlayerPool.Remove(player.Key);
+                    OtherTeam.Add(Forward);
+                    i++;
+                }
+                else { break; }
+            }
+        
+        
+            return OtherTeam;
         }
 	}
 }

@@ -29,10 +29,11 @@
             TeamGenerator teamGenerator = new TeamGenerator();
             team1.GeneratePlayers();
             team2.GeneratePlayers();
-            Console.WriteLine("Generating players for both teams...");
+            Console.WriteLine("Generating players for both teams...\n");
 
             //Displaying teams 
             team1.DisplayPlayers();
+            Console.WriteLine();
             team2.DisplayPlayers();
         }
     }
