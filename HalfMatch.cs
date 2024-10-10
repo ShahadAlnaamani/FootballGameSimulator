@@ -23,8 +23,8 @@ namespace FootBallGameSimulator
 		//Methods 
 
 		//Turn will be represented as instances in a loop 
-		public void Turn (Team Attacking, Team Defending, int turn)
-		{
+		public void Turn (Team Attacking, Team Defending, int turn) //Actual process of the game 
+        {
             for (int i = 0; i < HalfMatch; i++)
 			{
 
@@ -68,10 +68,10 @@ namespace FootBallGameSimulator
             }
 
             Console.WriteLine($"\nTotal Goals scored in this half: Team {Team1.TeamName} Score {Team1Score} | Team {Team2.TeamName} Score {Team2Score} ");
-        }
+        } 
 
-        public int CalculateTeamSkill(List<Player> players)
-		{
+        public int CalculateTeamSkill(List<Player> players) //Calculates the skills of players playing in a turn 
+        {
 			int TotalSkill = 0;
 
 			for (int i = 0; i < players.Count; i++) //Going through team players and tallying their skills 
@@ -80,7 +80,7 @@ namespace FootBallGameSimulator
 			}
 
 			return TotalSkill;
-		}
+		} 
 
 		public bool CompareSkills(int AttackerSkills, int DefenderSkills) //Boolean returned true=goal, false=saved
 		{
@@ -89,18 +89,9 @@ namespace FootBallGameSimulator
 				return false; //Goal saved 
 			}
 
-			else if (AttackerSkills > DefenderSkills)
-			{
-				if ((AttackerSkills - 10) >= DefenderSkills) //If attackers has at least 10 more skill points than defenders they will score a goal
-				{
-					return true;
-				}
-
-				else //Goal saved 
-				{
-					return false;	
-				}
-				
+			else if ((AttackerSkills-10) > DefenderSkills)//If attackers has at least 10 more skill points than defenders they will score a goal
+            {
+				return true;
 			}
 
 			else

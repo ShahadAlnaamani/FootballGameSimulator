@@ -1,4 +1,6 @@
-﻿namespace FootBallGameSimulator
+﻿using System.Xml.Serialization;
+
+namespace FootBallGameSimulator
 {
     internal class Program
     {
@@ -42,14 +44,13 @@
                 team2.DisplayPlayers();
 
                 //Start Match 
-
                 Half FirstHalf = new Half(team1, team2); //Creating the first half of the match 
                 Half SecondHalf = new Half(team1, team2); //Creating the second half of the match, put these one after the other so score does not get affected when new instance created 
 
                 Team Starting = FirstHalf.CoinToss();
                 Team SecondStart = SecondHalf.CoinToss();
 
-                Console.WriteLine("\n\n\n--- First Half ---");
+                Console.WriteLine("\n\n\n--- FIRST HALF ---");
 
                 if (Starting == team1)
                 { FirstHalf.Turn(Starting, team2, 1); }
@@ -58,7 +59,7 @@
                 { FirstHalf.Turn(Starting, team1, 1); }
 
 
-                Console.WriteLine("\n\n\n--- Second Half ---");
+                Console.WriteLine("\n\n\n--- SECOND HALF ---");
                 if (SecondStart == team1)
                 { SecondHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch + 1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
 
@@ -73,15 +74,45 @@
                 Console.WriteLine($"{SecondHalf.Team1.TeamName}: {team1.TeamScore} | {SecondHalf.Team2.TeamName}: {team2.TeamScore}");
 
                 //Display result
-                if (SecondHalf.Team2Score > SecondHalf.Team1Score)
+                if (team2.TeamScore > team1.TeamScore)
                 {
                     Console.WriteLine($"{team2.TeamName} are the winners!");
                 }
 
-                else if (SecondHalf.Team2Score < SecondHalf.Team1Score)
+                else if (team2.TeamScore < team1.TeamScore)
                 { Console.WriteLine($"{team1.TeamName} are the winners!"); }
 
-                else { Console.WriteLine("It's a draw!"); }
+                else
+                {
+                    bool ChoiceMade;
+                    do
+                    {
+                        ChoiceMade = true;
+
+                        Console.WriteLine("It's a draw!");
+                        Console.WriteLine("\n\nWould you like to go into penalties? \n1. Yes 2. No");
+                        Console.Write("Enter: ");
+                        int Choice = 0;
+
+                        try
+                        {
+                            Choice = int.Parse(Console.ReadLine());
+                        }
+                        catch (Exception e) 
+                        {
+                            Console.WriteLine("<!>" + e.Message + "<!>");
+                            ChoiceMade = false;
+                        }
+
+                        //Choosing to go ahead with penalties 
+                        if (Choice == 1)
+                        {
+                            Penalties penalties = new Penalties(team1, team2);
+                            penalties.PenaltyShots();
+                        }
+
+                    } while (ChoiceMade != true);
+                }
 
 
                 
@@ -105,6 +136,7 @@
 
                     if (Continue == 1)
                     {
+                        Console.WriteLine("\n\n\n--- PENALTIES ---");
                         TeamGenerator.AddTeam(); //Regenerating Player pool as players were deleted from it when they are placed in teams 
                         ValidChoice = true;
                     }
