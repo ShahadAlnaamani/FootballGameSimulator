@@ -59,8 +59,6 @@
 
 
                 Console.WriteLine("\n\n\n--- Second Half ---");
-
-                Console.WriteLine("Current total points 1 , 2 " + FirstHalf.Team1Score + FirstHalf.Team2Score);
                 if (SecondStart == team1)
                 { SecondHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch + 1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
 

@@ -11,30 +11,6 @@ public class TeamGenerator
     {
         //Adding values to dictionary
         AddTeam();
-        /*
-        PlayerPool.Add(1, "AlShibli");
-        PlayerPool.Add(2, "Abdullah");
-        PlayerPool.Add(3, "Fatma");
-        PlayerPool.Add(4, "Kareem");
-        PlayerPool.Add(5, "Afra7");
-        PlayerPool.Add(6, "Montaha");
-        PlayerPool.Add(7, "Amer");
-        PlayerPool.Add(8, "Shahad");
-        PlayerPool.Add(9, "Budoor");
-        PlayerPool.Add(10, "Alanoud");
-        PlayerPool.Add(11, "Tasneem");
-        PlayerPool.Add(12, "Amani");
-        PlayerPool.Add(13, "Azza");
-        PlayerPool.Add(14, "Afraa");
-        PlayerPool.Add(15, "Ibrahim");
-        PlayerPool.Add(16, "Rashid");
-        PlayerPool.Add(17, "Saleh");
-        PlayerPool.Add(18, "Mohammed");
-        PlayerPool.Add(19, "Zubair");
-        PlayerPool.Add(20, "Yazen");
-        PlayerPool.Add(21, "Duha");
-        PlayerPool.Add(22, "Azzan");
-        */
     }
 
     public static List<Player> Players(Team team)
@@ -132,9 +108,9 @@ public class TeamGenerator
             i = 0;
             foreach (KeyValuePair<int, string> player in PlayerPool)
             {
-                if (i < 2)
+                if (i < 3)
                 {
-                    //CREATING DEFENDERS x2
+                    //CREATING DEFENDERS x3
                     Skill = RandomInt.GetRandom(1, 101);
                     Player Def = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Defender, Skill);
                     PlayerPool.Remove(player.Key);
@@ -147,9 +123,9 @@ public class TeamGenerator
             i = 0;
             foreach (KeyValuePair<int, string> player in PlayerPool)
             {
-                if (i < 3)
+                if (i < 4)
                 {
-                    //CREATING MIDFIELDERS x3
+                    //CREATING MIDFIELDERS x4
                     Skill = RandomInt.GetRandom(1, 101);
                     Player Mid = new Player(player.Key, PlayerPool[player.Key], team, Player.Position.Midfielder, Skill);
                     PlayerPool.Remove(player.Key);

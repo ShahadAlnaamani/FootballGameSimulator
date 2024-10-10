@@ -41,8 +41,24 @@ namespace FootBallGameSimulator
 				}
                 else { Console.Write("Defended successfully!"); }
 
-				Console.WriteLine($" [Team {Team1.TeamName} Score {Team1.TeamScore} | Team {Team2.TeamName} Score {Team2.TeamScore}]");
-               
+                //Finding leading team 
+                if (Team1.TeamScore > Team2.TeamScore)
+				{
+					Console.Write($" Team {Team1.TeamName} is winning");
+				}
+
+				else if (Team1.TeamScore < Team2.TeamScore)
+				{
+                    Console.Write($" Team {Team2.TeamName} is winning");
+                }
+
+				else
+				{
+					Console.Write("The teams are tied");
+				}
+
+                Console.Write($" score: [Team {Team1.TeamName} {Team1.TeamScore}] [Team {Team2.TeamName} {Team2.TeamScore}]\n");
+
                 //Now teams will swap places Attackers will become Defenders and vice versa 
                 Team X = Defending; 
 			    Defending = Attacking;
