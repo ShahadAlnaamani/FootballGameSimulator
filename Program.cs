@@ -18,8 +18,11 @@ namespace FootBallGameSimulator
                 Console.WriteLine(Header);
                 Console.WriteLine("\n");
                 string Welcome = "Welcome to the Codeline playoffs (keep an eye out and see who you can spot from the team!)";
+                UserInterface.PrintFootballPlayers();
                 Console.SetCursorPosition((Console.WindowWidth - Welcome.Length) / 2, Console.CursorTop);
                 Console.WriteLine(Welcome);
+
+
 
                 //Getting user input for the team names 
                 Console.Write("\nEnter name for Team 1: "); //write and not writeline so that user will input on the same line as text 
@@ -28,9 +31,13 @@ namespace FootBallGameSimulator
                 string Team2 = Console.ReadLine();
                 Console.WriteLine();
 
+
+
                 //Creating instances of the Teams class 
                 Team team1 = new Team(Team1);
                 Team team2 = new Team(Team2);
+
+
 
                 //Generating players
                 TeamGenerator teamGenerator = new TeamGenerator();
@@ -38,10 +45,18 @@ namespace FootBallGameSimulator
                 team2.GeneratePlayers();
                 Console.WriteLine("Generating players for both teams...\n");
 
+
+
                 //Displaying teams 
+                PrintLines();
+                string DisplayTeam = "T E A M S:";
+                Console.SetCursorPosition((Console.WindowWidth - DisplayTeam.Length) / 2, Console.CursorTop);
+                Console.WriteLine(DisplayTeam);
                 team1.DisplayPlayers();
                 Console.WriteLine();
                 team2.DisplayPlayers();
+
+
 
                 //Start Match 
                 Half FirstHalf = new Half(team1, team2); //Creating the first half of the match 
@@ -50,7 +65,10 @@ namespace FootBallGameSimulator
                 Team Starting = FirstHalf.CoinToss();
                 Team SecondStart = SecondHalf.CoinToss();
 
-                Console.WriteLine("\n\n\n--- FIRST HALF ---");
+                PrintLines();
+                string Half1Message = "F I R S T   H A L F:";
+                Console.SetCursorPosition((Console.WindowWidth - Half1Message.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Half1Message);
 
                 if (Starting == team1)
                 { FirstHalf.Turn(Starting, team2, 1); }
@@ -58,8 +76,18 @@ namespace FootBallGameSimulator
                 else
                 { FirstHalf.Turn(Starting, team1, 1); }
 
+                PrintLines();
+                string HalfTimeMessage = "H A L F   T I M E:";
+                Console.SetCursorPosition((Console.WindowWidth - HalfTimeMessage.Length) / 2, Console.CursorTop);
+                Console.WriteLine(HalfTimeMessage);
 
-                Console.WriteLine("\n\n\n--- SECOND HALF ---");
+                UserInterface.PrintGoal(); //ASCII art
+
+                PrintLines();
+                string Half2Message = "S E C O N D   H A L F:";
+                Console.SetCursorPosition((Console.WindowWidth - Half2Message.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Half2Message);
+
                 if (SecondStart == team1)
                 { SecondHalf.Turn(SecondStart, team2, (FirstHalf.HalfMatch + 1)); } //Starting with half match so the number of the turn continues and does not restart from 1 
 
@@ -69,9 +97,16 @@ namespace FootBallGameSimulator
                 }
 
 
+
                 //Display final score 
-                Console.WriteLine("\n\nFINAL SCORE:");
+                PrintLines();
+                string FinalScoreMessage = "F I N A L   S C O R E:";
+                Console.SetCursorPosition((Console.WindowWidth - FinalScoreMessage.Length) / 2, Console.CursorTop);
+                Console.WriteLine(FinalScoreMessage);
+                UserInterface.PrintVictory(); //ASCII art
                 Console.WriteLine($"{SecondHalf.Team1.TeamName}: {team1.TeamScore} | {SecondHalf.Team2.TeamName}: {team2.TeamScore}");
+
+
 
                 //Display result
                 if (team2.TeamScore > team1.TeamScore)
@@ -80,8 +115,11 @@ namespace FootBallGameSimulator
                 }
 
                 else if (team2.TeamScore < team1.TeamScore)
-                { Console.WriteLine($"{team1.TeamName} are the winners!"); }
+                {
+                    Console.WriteLine($"{team1.TeamName} are the winners!"); 
+                }
 
+                //Penalty option 
                 else
                 {
                     bool ChoiceMade;
@@ -114,9 +152,6 @@ namespace FootBallGameSimulator
                     } while (ChoiceMade != true);
                 }
 
-
-                
-
                 int Continue = 0;
                 bool ValidChoice;
                 do
@@ -137,6 +172,10 @@ namespace FootBallGameSimulator
                     if (Continue == 1)
                     {
                         Console.WriteLine("\n\n\n--- PENALTIES ---");
+                        PrintLines();
+                        string PenaltyMessage = "P E N A L T I E S:";
+                        Console.SetCursorPosition((Console.WindowWidth - PenaltyMessage.Length) / 2, Console.CursorTop);
+                        Console.WriteLine(HalfTimeMessage);
                         TeamGenerator.AddTeam(); //Regenerating Player pool as players were deleted from it when they are placed in teams 
                         ValidChoice = true;
                     }
@@ -155,6 +194,11 @@ namespace FootBallGameSimulator
                 } while (ValidChoice != true);
 
             } while (Running != false);
+        }
+
+        public static void PrintLines()
+        {
+            Console.WriteLine("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
         }
     }
 }
