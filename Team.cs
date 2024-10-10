@@ -56,7 +56,8 @@ namespace FootBallGameSimulator
             for (int i = 0; i < NumAttackers; i++) //Randomly choosing a group of attackers 
             {
                 int player = RandomInt.GetRandom(1, Attackers.Count);
-                ChosenAttackers.Add(Players[player]);
+                ChosenAttackers.Add(Attackers[player]);
+                Attackers.Remove(Attackers[player]);
             }
             
             return ChosenAttackers;

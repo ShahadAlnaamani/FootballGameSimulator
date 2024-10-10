@@ -27,16 +27,22 @@ namespace FootBallGameSimulator
         {
             for (int i = 0; i < HalfMatch; i++)
 			{
+				List<Player> Attackers = new List<Player> ();
+				Attackers = Attacking.Attack();
 
-                int AttackerSkills = CalculateTeamSkill(Attacking.Attack());//Generating new mix of players from the team that will participate in the turn and calculating the skill level
+                int AttackerSkills = CalculateTeamSkill(Attackers);//Generating new mix of players from the team that will participate in the turn and calculating the skill level
                 int DefenderSkills = CalculateTeamSkill(Defending.Defend());
 				bool Goal = CompareSkills(AttackerSkills, DefenderSkills);
 
-                Console.Write($"\nTurn {turn}: {Attacking.TeamName} are attacking... ");
+                Console.Write($"\n\nTurn {turn}: {Attacking.TeamName} are attacking... ");
                 turn++;
                 if (Goal)
 				{ 
-					Console.Write("Goal!");
+					Console.Write("\nGoal scored by ->");
+					foreach (Player attacker in Attackers)
+					{
+						Console.Write($" {attacker.Name}");
+					}
 					AddScore(Attacking);
 				}
                 else { Console.Write("Defended successfully!"); }
@@ -44,20 +50,20 @@ namespace FootBallGameSimulator
                 //Finding leading team 
                 if (Team1.TeamScore > Team2.TeamScore)
 				{
-					Console.Write($" Team {Team1.TeamName} is winning");
+					Console.WriteLine($"\nTeam {Team1.TeamName} is winning");
 				}
 
 				else if (Team1.TeamScore < Team2.TeamScore)
 				{
-                    Console.Write($" Team {Team2.TeamName} is winning");
+                    Console.WriteLine($"\nTeam {Team2.TeamName} is winning");
                 }
 
 				else
 				{
-					Console.Write("The teams are tied");
+					Console.WriteLine("\nThe teams are tied");
 				}
 
-                Console.Write($" score: [Team {Team1.TeamName} {Team1.TeamScore}] [Team {Team2.TeamName} {Team2.TeamScore}]\n");
+                Console.Write($"Score: [Team {Team1.TeamName} {Team1.TeamScore}] [Team {Team2.TeamName} {Team2.TeamScore}]\n");
 
                 //Now teams will swap places Attackers will become Defenders and vice versa 
                 Team X = Defending; 

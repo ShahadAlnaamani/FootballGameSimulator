@@ -64,7 +64,7 @@ namespace FootBallGameSimulator
                     {
                         T2PenGoals = T2PenGoals + 1;
                     }
-                    Console.Write($"Penalty scored! [Score: {Team1.TeamName} {T1PenGoals} | {Team2.TeamName} {T2PenGoals}]\n");
+                    Console.Write($"{Attacker.Name} scored a penalty! [Score: {Team1.TeamName} {T1PenGoals} | {Team2.TeamName} {T2PenGoals}]\n");
 				}
 
 				else //Saved 
