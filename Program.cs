@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Globalization;
+using System.Xml.Serialization;
 
 namespace FootBallGameSimulator
 {
@@ -104,19 +105,26 @@ namespace FootBallGameSimulator
                 Console.SetCursorPosition((Console.WindowWidth - FinalScoreMessage.Length) / 2, Console.CursorTop);
                 Console.WriteLine(FinalScoreMessage);
                 UserInterface.PrintVictory(); //ASCII art
-                Console.WriteLine($"{SecondHalf.Team1.TeamName}: {team1.TeamScore} | {SecondHalf.Team2.TeamName}: {team2.TeamScore}");
-
+                string Score = $"{SecondHalf.Team1.TeamName}: {team1.TeamScore} | {SecondHalf.Team2.TeamName}: {team2.TeamScore}";
+                Console.SetCursorPosition((Console.WindowWidth - Score.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Score);
 
 
                 //Display result
+                string Results = " ";
+
                 if (team2.TeamScore > team1.TeamScore)
                 {
-                    Console.WriteLine($"{team2.TeamName} are the winners!");
+                    Results = $"{team2.TeamName} are the winners!";
+                    Console.SetCursorPosition((Console.WindowWidth - Results.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(Results);
                 }
 
                 else if (team2.TeamScore < team1.TeamScore)
                 {
-                    Console.WriteLine($"{team1.TeamName} are the winners!"); 
+                     Results = $"{team1.TeamName} are the winners!";
+                    Console.SetCursorPosition((Console.WindowWidth - Results.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(Results);
                 }
 
                 //Penalty option 
