@@ -71,12 +71,12 @@ namespace FootBallGameSimulator
             List<Player> Defenders = new List<Player>(); //All eligible players 
             List<Player> ChosenDefenders = new List<Player>();//Final random choice of defenders
 
-            for (int i = 0; i < Players.Count;i++) 
+            for (int i = 0; i < Players.Count;i++) //Sorting through players and getting defenders and goalie
             {
                 if (Players[i].position == Player.Position.GoalKeeper) 
                 {
                     ChosenDefenders.Add(Players[i]);
-                    NumDefenders--; //To take account for the goalie 
+                    NumDefenders = ( NumDefenders - 1); //To take account for the goalie 
                 }
 
                 if (Players[i].position == Player.Position.Defender) //Collecting all defenders 

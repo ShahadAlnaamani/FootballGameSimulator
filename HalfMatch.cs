@@ -27,8 +27,9 @@ namespace FootBallGameSimulator
 		{
             for (int i = 0; i < HalfMatch; i++)
 			{
-                int AttackerSkills = CalculateTeamSkill(Attacking);
-				int DefenderSkills = CalculateTeamSkill(Defending);
+
+                int AttackerSkills = CalculateTeamSkill(Attacking.Attack());//Generating new mix of players from the team that will participate in the turn and calculating the skill level
+                int DefenderSkills = CalculateTeamSkill(Defending.Defend());
 				bool Goal = CompareSkills(AttackerSkills, DefenderSkills);
 
                 Console.Write($"\nTurn {turn}: {Attacking.TeamName} are attacking... ");
@@ -47,20 +48,19 @@ namespace FootBallGameSimulator
 			    Defending = Attacking;
 				Attacking = X;
 
-				Defending.Defend(); //Generating new mix of players from the team that will participate in the next turn
-				Attacking.Attack();
+				
             }
 
             Console.WriteLine($"\nTotal Goals scored in this half: Team {Team1.TeamName} Score {Team1Score} | Team {Team2.TeamName} Score {Team2Score} ");
         }
 
-        public int CalculateTeamSkill(Team team)
+        public int CalculateTeamSkill(List<Player> players)
 		{
 			int TotalSkill = 0;
 
-			for (int i = 0; i < team.Players.Count; i++) //Going through team players and tallying their skills 
+			for (int i = 0; i < players.Count; i++) //Going through team players and tallying their skills 
 			{
-				TotalSkill = TotalSkill + team.Players[i].SkillLevel;
+				TotalSkill = TotalSkill + players[i].SkillLevel;
 			}
 
 			return TotalSkill;
