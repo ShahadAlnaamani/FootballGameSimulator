@@ -66,7 +66,7 @@
 
             //Display final score 
             Console.WriteLine("\n\nFINAL SCORE:");
-            Console.WriteLine($"{SecondHalf.Team1.TeamName}: {SecondHalf.Team1Score} | {SecondHalf.Team2.TeamName}: {SecondHalf.Team2Score}");
+            Console.WriteLine($"{SecondHalf.Team1.TeamName}: {team1.TeamScore} | {SecondHalf.Team2.TeamName}: {team2.TeamScore}");
 
             //Display result
             if (SecondHalf.Team2Score > SecondHalf.Team1Score)

@@ -7,9 +7,10 @@ namespace FootBallGameSimulator
 		//Attributes
 		public string TeamName { get; private set; }
 		public List<Player> Players { get; private set; }
+        public int TeamScore { get; private set; }
 
 
-		//Constructor
+        //Constructor
         public Team(string teamName)
 		{
 			//Players = new < Players > ();
@@ -92,6 +93,11 @@ namespace FootBallGameSimulator
 
             return ChosenDefenders;
 
+        }
+
+        public void AddScore()
+        {
+            TeamScore = TeamScore+1;
         }
     }
 }

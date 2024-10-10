@@ -16,7 +16,7 @@ public class TeamGenerator
         PlayerPool.Add(4, "Kareem");
         PlayerPool.Add(5, "Afra7");
         PlayerPool.Add(6, "Montaha");
-        PlayerPool.Add(7, "Ruple");
+        PlayerPool.Add(7, "Amer");
         PlayerPool.Add(8, "Shahad");
         PlayerPool.Add(9, "Budoor");
         PlayerPool.Add(10, "Alanoud");

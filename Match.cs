@@ -41,14 +41,16 @@ namespace FootBallGameSimulator
 		{
 			if (team == Team1)
 			{
-				Team1Score++;
+				Team1Score++; //Doccuments the half match score 
+				team.AddScore(); //Doccuments the total score 
 				return 1;
 			}
 
 			else if (team == Team2)
 			{
-				Team2Score++;
-				return 1;
+				Team2Score++; //Doccuments the half match score 
+                team.AddScore(); //Doccuments the total score 
+                return 1;
 			}
 
 			else

@@ -25,8 +25,6 @@ namespace FootBallGameSimulator
 		//Turn will be represented as instances in a loop 
 		public void Turn (Team Attacking, Team Defending, int turn)
 		{
-
-            Console.WriteLine("Current total points 1 , 2 " + Team1Score + Team2Score);
             for (int i = 0; i < HalfMatch; i++)
 			{
                 int AttackerSkills = CalculateTeamSkill(Attacking);
@@ -42,7 +40,7 @@ namespace FootBallGameSimulator
 				}
                 else { Console.Write("Defended successfully!"); }
 
-				Console.WriteLine($" --> Team {Team1.TeamName} Score {Team1Score} | Team {Team2.TeamName} Score {Team2Score}");
+				Console.WriteLine($" [Team {Team1.TeamName} Score {Team1.TeamScore} | Team {Team2.TeamName} Score {Team2.TeamScore}]");
                
                 //Now teams will swap places Attackers will become Defenders and vice versa 
                 Team X = Defending; 
@@ -53,7 +51,7 @@ namespace FootBallGameSimulator
 				Attacking.Attack();
             }
 
-            Console.WriteLine("Current total points 1 , 2 " + Team1Score + Team2Score);
+            Console.WriteLine($"\nTotal Goals scored in this half: Team {Team1.TeamName} Score {Team1Score} | Team {Team2.TeamName} Score {Team2Score} ");
         }
 
         public int CalculateTeamSkill(Team team)
