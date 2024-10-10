@@ -37,25 +37,23 @@ namespace FootBallGameSimulator
 			return StartingTeam;
 		}
 
-		public int AddScore(Team team)
+		public void AddScore(Team team)
 		{
 			if (team == Team1)
 			{
 				Team1Score++; //Doccuments the half match score 
 				team.AddScore(); //Doccuments the total score 
-				return 1;
 			}
 
 			else if (team == Team2)
 			{
 				Team2Score++; //Doccuments the half match score 
                 team.AddScore(); //Doccuments the total score 
-                return 1;
 			}
 
 			else
 			{
-				return 0; //Means an issue happened and will print an error message from program     
+				Console.WriteLine("<!>Error occured when trying to add goal for team " + team.TeamName + "<!>");    
 			}
 		}
 	}

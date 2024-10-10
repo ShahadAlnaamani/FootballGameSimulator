@@ -10,6 +10,8 @@ public class TeamGenerator
     public  TeamGenerator()
     {
         //Adding values to dictionary
+        AddTeam();
+        /*
         PlayerPool.Add(1, "AlShibli");
         PlayerPool.Add(2, "Abdullah");
         PlayerPool.Add(3, "Fatma");
@@ -32,6 +34,7 @@ public class TeamGenerator
         PlayerPool.Add(20, "Yazen");
         PlayerPool.Add(21, "Duha");
         PlayerPool.Add(22, "Azzan");
+        */
     }
 
     public static List<Player> Players(Team team)
@@ -45,7 +48,6 @@ public class TeamGenerator
 
         if (PlayerPool.Count == 22) //CODE FOR FIRST TEAM
         {
-
             //Each team will have: 1 Goalie, 3 Defenders, 4 Midfielders, 3 Forward
 
             //CREATING GOALIE x1
@@ -175,4 +177,32 @@ public class TeamGenerator
             return OtherTeam;
         }
 	}
+
+    public static void AddTeam()
+    {
+        PlayerPool.Clear();
+        //Adding values to dictionary
+        PlayerPool.Add(1, "AlShibli");
+        PlayerPool.Add(2, "Abdullah");
+        PlayerPool.Add(3, "Fatma");
+        PlayerPool.Add(4, "Kareem");
+        PlayerPool.Add(5, "Afra7");
+        PlayerPool.Add(6, "Montaha");
+        PlayerPool.Add(7, "Amer");
+        PlayerPool.Add(8, "Shahad");
+        PlayerPool.Add(9, "Budoor");
+        PlayerPool.Add(10, "Alanoud");
+        PlayerPool.Add(11, "Tasneem");
+        PlayerPool.Add(12, "Amani");
+        PlayerPool.Add(13, "Azza");
+        PlayerPool.Add(14, "Afraa");
+        PlayerPool.Add(15, "Ibrahim");
+        PlayerPool.Add(16, "Rashid");
+        PlayerPool.Add(17, "Saleh");
+        PlayerPool.Add(18, "Mohammed");
+        PlayerPool.Add(19, "Zubair");
+        PlayerPool.Add(20, "Yazen");
+        PlayerPool.Add(21, "Duha");
+        PlayerPool.Add(22, "Azzan");
+    }
 }
