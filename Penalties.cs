@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Globalization;
 
 namespace FootBallGameSimulator
 {
@@ -94,16 +95,32 @@ namespace FootBallGameSimulator
 
 		public void PrintResults()
 		{
-			Console.WriteLine($"\n\nFINAL SCORE \n{Team1.TeamName}: {T1PenGoals} | {Team2.TeamName}: {T2PenGoals}");
+            Program.PrintLines();
+            string FinalScoreMessage = "F I N A L   S C O R E:";
+            Console.SetCursorPosition((Console.WindowWidth - FinalScoreMessage.Length) / 2, Console.CursorTop);
+            Console.WriteLine(FinalScoreMessage);
 
-			if (T1PenGoals > T2PenGoals)
+			UserInterface.PrintVictory();//ASCII ART
+
+            string Results = $"{Team1.TeamName}: {T1PenGoals} | {Team2.TeamName}: {T2PenGoals}";
+            Console.SetCursorPosition((Console.WindowWidth - Results.Length) / 2, Console.CursorTop);
+            Console.WriteLine(Results);
+			Console.ForegroundColor = ConsoleColor.Cyan;
+
+            if (T1PenGoals > T2PenGoals)
 			{
-				Console.WriteLine($"{Team1.TeamName} is the winner!!");
-			}
+				string Winner = $"{Team1.TeamName} is the winner!!";
+                Console.SetCursorPosition((Console.WindowWidth - Winner.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Winner);
+                Console.ResetColor();
+            }
 
 			else if (T1PenGoals < T2PenGoals)
 			{
-                Console.WriteLine($"{Team2.TeamName} is the winner!!");
+                string Winner = $"{Team2.TeamName} is the winner!!";
+                Console.SetCursorPosition((Console.WindowWidth - Winner.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Winner);
+                Console.ResetColor();
             }
 
 			else //draw again 

@@ -26,12 +26,14 @@ namespace FootBallGameSimulator
 
 
                 //Getting user input for the team names 
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("\nEnter name for Team 1: "); //write and not writeline so that user will input on the same line as text 
                 string Team1 = Console.ReadLine();
+                Console.ForegroundColor= ConsoleColor.Red;
                 Console.Write("\nEnter name for Team 2: ");
                 string Team2 = Console.ReadLine();
                 Console.WriteLine();
-
+                Console.ResetColor();
 
 
                 //Creating instances of the Teams class 
@@ -53,9 +55,12 @@ namespace FootBallGameSimulator
                 string DisplayTeam = "T E A M S:";
                 Console.SetCursorPosition((Console.WindowWidth - DisplayTeam.Length) / 2, Console.CursorTop);
                 Console.WriteLine(DisplayTeam);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 team1.DisplayPlayers();
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
                 team2.DisplayPlayers();
+                Console.ResetColor();
 
 
 
@@ -112,12 +117,14 @@ namespace FootBallGameSimulator
 
                 //Display result
                 string Results = " ";
-
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 if (team2.TeamScore > team1.TeamScore)
                 {
+                    
                     Results = $"{team2.TeamName} are the winners!";
                     Console.SetCursorPosition((Console.WindowWidth - Results.Length) / 2, Console.CursorTop);
                     Console.WriteLine(Results);
+                    Console.ResetColor();
                 }
 
                 else if (team2.TeamScore < team1.TeamScore)
@@ -125,6 +132,7 @@ namespace FootBallGameSimulator
                      Results = $"{team1.TeamName} are the winners!";
                     Console.SetCursorPosition((Console.WindowWidth - Results.Length) / 2, Console.CursorTop);
                     Console.WriteLine(Results);
+                    Console.ResetColor();
                 }
 
                 //Penalty option 
@@ -179,11 +187,10 @@ namespace FootBallGameSimulator
 
                     if (Continue == 1)
                     {
-                        Console.WriteLine("\n\n\n--- PENALTIES ---");
                         PrintLines();
                         string PenaltyMessage = "P E N A L T I E S:";
                         Console.SetCursorPosition((Console.WindowWidth - PenaltyMessage.Length) / 2, Console.CursorTop);
-                        Console.WriteLine(HalfTimeMessage);
+                        Console.WriteLine(PenaltyMessage);
                         TeamGenerator.AddTeam(); //Regenerating Player pool as players were deleted from it when they are placed in teams 
                         ValidChoice = true;
                     }
